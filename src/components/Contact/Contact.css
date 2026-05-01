@@ -1,0 +1,218 @@
+/* ── Design tokens ── */
+:root {
+  --contact-sticker-mobile: 220px;
+  --contact-sticker-tablet: 340px;
+  --contact-sticker-desktop: 500px;
+  --contact-dark: #0f172a;
+  --transition-fast: 0.2s ease;
+}
+
+/* ═══════════════════════════════
+   BASE (mobile-first)
+═══════════════════════════════ */
+
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 30px 16px;
+}
+
+/* ── Left: form panel ── */
+.contact-left {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ── Section label pill ── */
+.contact-label {
+  display: inline-block;
+  align-self: flex-start;
+  background-color: var(--contact-dark);
+  color: white;
+  border-radius: 50px;
+  padding: 8px 20px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+/* ── Form ── */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.contact-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.contact-field-label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: black;
+}
+
+.contact-input,
+.contact-textarea {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  padding: 10px 16px;
+  border: 2px solid var(--contact-dark);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text);
+  outline: none;
+  resize: none;
+  transition: border-color var(--transition-fast);
+}
+
+.contact-input:focus,
+.contact-textarea:focus {
+  border-color: #1a73e8;
+}
+
+/* ── Submit button ── */
+.contact-btn {
+  align-self: flex-start;
+  background-color: var(--contact-dark);
+  color: white;
+  border: 2px solid var(--contact-dark);
+  border-radius: 50px;
+  padding: 10px 32px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: opacity var(--transition-fast);
+}
+
+.contact-btn:hover { opacity: 0.8; }
+
+.contact-btn .code-var,
+.contact-btn .code-keyword {
+  color: white !important;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ── Success state ── */
+.contact-success {
+  padding: 20px;
+  border: 2px solid var(--contact-dark);
+  border-radius: 8px;
+}
+
+.contact-success p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* ── Right: cat + socials ── */
+.contact-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sticker {
+  width: var(--contact-sticker-mobile);
+  height: var(--contact-sticker-mobile);
+  object-fit: contain;
+  object-position: center;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.sticker:hover { animation: wiggle 0.4s ease; }
+
+@keyframes wiggle {
+  0%   { transform: rotate(0deg); }
+  25%  { transform: rotate(-5deg); }
+  50%  { transform: rotate(5deg); }
+  75%  { transform: rotate(-3deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.note {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: black;
+  text-align: center;
+  margin: 0;
+}
+
+.contact-socials {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ═══════════════════════════════
+   TABLET (≥768px)
+═══════════════════════════════ */
+@media (min-width: 768px) {
+  .contact-container {
+    padding: 40px 32px;
+    gap: 40px;
+  }
+
+  .sticker {
+    width: var(--contact-sticker-tablet);
+    height: var(--contact-sticker-tablet);
+  }
+
+  .contact-socials { justify-content: flex-end; }
+}
+
+/* ═══════════════════════════════
+   DESKTOP (≥1024px)
+═══════════════════════════════ */
+@media (min-width: 1024px) {
+  .contact-container {
+    flex-direction: row;
+    height: 70vh;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 0;
+  }
+
+  .contact-left {
+    flex: 1;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px;
+    margin-left: 100px;
+  }
+
+  .contact-right {
+    flex: 1;
+    justify-content: center;
+    padding: 30px;
+    margin-right: 30px;
+    align-items: stretch;
+  }
+
+  .sticker {
+    width: var(--contact-sticker-desktop);
+    height: var(--contact-sticker-desktop);
+  }
+
+  .note { text-align: center; }
+
+  .contact-socials { justify-content: flex-end; }
+}

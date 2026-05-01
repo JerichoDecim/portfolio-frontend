@@ -1,0 +1,176 @@
+/* ── Design tokens ── */
+:root {
+  --tech-img-size-mobile: 48px;
+  --tech-img-size-tablet: 60px;
+  --tech-img-size-desktop: 70px;
+  --tech-code-size-mobile: 0.78rem;
+  --tech-code-size-tablet: 1rem;
+  --tech-code-size-desktop: 1.2rem;
+  --tech-label-size-mobile: 1rem;
+  --tech-label-size-desktop: 1.3rem;
+  --transition-fast: 0.2s ease;
+}
+
+/* ═══════════════════════════════
+   BASE (mobile-first)
+═══════════════════════════════ */
+
+.tech-container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 24px 16px;
+  overflow: hidden;
+}
+
+/* ── Left & right both full-width on mobile ── */
+.tech-left,
+.tech-right {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* ── Individual category block ── */
+.tech-category {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Icon row ── */
+.set {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  padding-top: 16px;
+}
+
+.set img {
+  width: var(--tech-img-size-mobile);
+  height: var(--tech-img-size-mobile);
+  object-fit: contain;
+  object-position: center;
+  transition: transform var(--transition-fast), filter var(--transition-fast);
+  cursor: pointer;
+}
+
+.set img:hover {
+  transform: rotate(15deg) scale(1.1);
+}
+
+/* ── Category pill label ── */
+.tech-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0f172a;
+  color: white;
+  padding: 6px 20px;
+  border-radius: 50px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: var(--tech-label-size-mobile);
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* ── Right-side code block ── */
+.right-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.right-text pre {
+  font-family: 'Poppins', sans-serif;
+  font-size: var(--tech-code-size-mobile);
+  line-height: 1.8;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0;
+}
+
+/* ═══════════════════════════════
+   TABLET (≥768px)
+═══════════════════════════════ */
+@media (min-width: 768px) {
+  .tech-container {
+    padding: 32px 32px;
+    gap: 40px;
+  }
+
+  .tech-left {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .set img {
+    width: var(--tech-img-size-tablet);
+    height: var(--tech-img-size-tablet);
+  }
+
+  /* ✅ REMOVED nowrap — icons will wrap instead of overflow */
+  .set { gap: 20px; }
+
+  .right-text pre {
+    font-size: var(--tech-code-size-tablet);
+  }
+}
+
+/* ═══════════════════════════════
+   DESKTOP (≥1024px)
+═══════════════════════════════ */
+@media (min-width: 1024px) {
+  .tech-container {
+    flex-direction: row;
+    height: 88vh;
+    gap: 5px;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .tech-left {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 40%;
+    justify-content: space-around;
+    gap: 0;
+  }
+
+  .tech-right {
+    flex: 0 0 60%;
+    justify-content: space-around;
+    gap: 0;
+  }
+
+  .right-text {
+    flex: 0 0 30%;
+    margin-top: 100px;
+  }
+
+  .right-text pre {
+    font-size: var(--tech-code-size-desktop);
+  }
+
+  .set img {
+    width: var(--tech-img-size-desktop);
+    height: var(--tech-img-size-desktop);
+  }
+
+  .tech-label {
+    font-size: var(--tech-label-size-desktop);
+    width: 20%;
+  }
+
+  /* column4 equivalent — last category in right panel */
+  .tech-right .tech-category {
+    flex: 0 0 70%;
+    padding-bottom: 120px;
+    justify-content: center;
+  }
+}

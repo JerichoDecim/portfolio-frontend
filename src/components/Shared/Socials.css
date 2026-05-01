@@ -1,0 +1,47 @@
+/* ═══════════════════════════════
+   BASE (mobile-first)
+═══════════════════════════════ */
+
+.container-socials {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+.socials {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.container-socials a:hover .socials {
+  transform: scale(1.15);
+  opacity: 0.75;
+}
+
+/* ═══════════════════════════════
+   TABLET (≥768px)
+═══════════════════════════════ */
+@media (min-width: 768px) {
+  .socials {
+    width: 40px;
+    height: 40px;
+  }
+
+  .container-socials { gap: 16px; }
+}
+
+/* ═══════════════════════════════
+   DESKTOP (≥1024px)
+═══════════════════════════════ */
+@media (min-width: 1024px) {
+  .socials {
+    width: 48px;
+    height: 48px;
+  }
+
+  .container-socials { gap: 20px; }
+}

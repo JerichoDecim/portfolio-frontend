@@ -1,0 +1,32 @@
+/* ═══════════════════════════════
+   BASE (mobile-first)
+═══════════════════════════════ */
+.gallery-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+}
+
+/* ═══════════════════════════════
+   TABLET (≥768px)
+═══════════════════════════════ */
+@media (min-width: 768px) {
+  .gallery-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+}
+
+/* ═══════════════════════════════
+   DESKTOP (≥1024px)
+═══════════════════════════════ */
+@media (min-width: 1024px) {
+  .gallery-container {
+    flex-wrap: nowrap;
+    gap: 50px;
+  }
+}

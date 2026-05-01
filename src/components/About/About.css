@@ -1,0 +1,151 @@
+/* ── Design tokens (inherits global ones if defined, or local fallbacks) ── */
+:root {
+  --about-img-size-mobile: 180px;
+  --about-img-size-tablet: 240px;
+  --about-img-size-desktop: 300px;
+  --about-code-size-mobile: 0.8rem;
+  --about-code-size-tablet: 1rem;
+  --about-code-size-desktop: 1.15rem;
+}
+
+
+
+/* ═══════════════════════════════
+   BASE (mobile-first)
+═══════════════════════════════ */
+
+.about-container {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 20px 16px;
+  margin-top: 30px;
+}
+
+/* ── Top: stacked on mobile ── */
+.about-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+/* ── Left: profile image ── */
+.about-left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-left img {
+  width: var(--about-img-size-mobile);
+  height: var(--about-img-size-mobile);
+  object-fit: cover;
+  border-radius: 4px;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+
+/* ── Right: bio code block ── */
+.about-right {
+  width: 100%;
+  padding: 0;
+}
+
+.about-right pre {
+  font-family: 'Poppins', sans-serif;
+  font-size: var(--about-code-size-mobile);
+  line-height: 1.75;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0;
+  font-weight: 450;
+}
+
+/* ── Bottom: gallery ── */
+.about-bottom {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+/* ═══════════════════════════════
+   TABLET (≥768px)
+═══════════════════════════════ */
+@media (min-width: 768px) {
+  .about-container {
+    gap: 32px;
+    padding: 28px 32px;
+  }
+
+  /* Side-by-side at tablet */
+  .about-top {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .about-left {
+    flex: 0 0 auto;
+    align-items: flex-start;
+  }
+
+  .about-left img {
+    width: var(--about-img-size-tablet);
+    height: var(--about-img-size-tablet);
+  }
+
+  .about-right {
+    flex: 1;
+    padding-top: 12px;
+  }
+
+  .about-right pre {
+    font-size: var(--about-code-size-tablet);
+  }
+}
+
+/* ═══════════════════════════════
+   DESKTOP (≥1024px)
+═══════════════════════════════ */
+@media (min-width: 1024px) {
+  .about-container {
+    gap: 35px;
+    padding: 30px 0;
+    height: 88vh;
+  }
+
+  .about-top {
+    gap: 8px;
+  }
+
+  .about-left {
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .about-left img {
+    width: var(--about-img-size-desktop);
+    height: var(--about-img-size-desktop);
+  }
+
+  .about-right {
+    flex: 2;
+    padding-top: 20px;
+    padding-right: 30px;
+  }
+
+  .about-right pre {
+    font-size: var(--about-code-size-desktop);
+  }
+}
+
+.about-left img:hover {
+  transform: scale(1.05);
+  filter: brightness(1.05);
+}
