@@ -9,9 +9,8 @@ function Card({ image, alt = "card image", description = "", link = "#" }) {
       className="card"
       onMouseEnter={() => setVisible(true)}
       onMouseLeave={() => setVisible(false)}
-      onFocus={() => setVisible(true)}
-      onBlur={() => setVisible(false)}
     >
+      {/* Top Bar */}
       <div className="card-titlebar">
         <div className="card-searchbar" />
         <div className="card-dots">
@@ -21,23 +20,32 @@ function Card({ image, alt = "card image", description = "", link = "#" }) {
         </div>
       </div>
 
-      <div className="card-image-wrapper">
-        {image
-          ? <img src={image} alt={alt} className="card-image" />
-          : <div className="card-placeholder">No Image</div>
-        }
+      {/* Image Section */}
+      <div className="card-media">
+        {image ? (
+          <img
+            src={image}
+            alt={alt}
+            className="card-image"
+            loading="lazy"
+          />
+        ) : (
+          <div className="card-placeholder">No Image</div>
+        )}
 
-        {visible && description && (
-          <div className="card-popup">
-            <p className="card-popup-text">{description}</p>
-            <a
-              href={link}
-              className="card-popup-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Read more →
-            </a>
+        {description && (
+          <div className={`card-overlay ${visible ? "show" : ""}`}>
+            <div className="card-popup">
+              <p>{description}</p>
+              <a 
+               
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Read more →
+              </a>
+            </div>
           </div>
         )}
       </div>

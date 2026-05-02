@@ -64,8 +64,8 @@ function ContactForm({ form, onChange, onSubmit }) {
       </FormField>
 
       <button type="submit" className="contact-btn" onClick={onSubmit}>
-        <span className="code-keyword">Submit</span>
-        <span className="code-var">()</span>
+        <span className="code-keyword">Submit </span>
+        <span className="code-keyword">() </span>
       </button>
     </div>
   );
@@ -94,6 +94,7 @@ export default function Contact() {
       </div>
 
       <div className="contact-right">
+        <p className="note">Here's a lucky picture of my cat!</p>
         <div className="frame">
           <img
             className="sticker"
@@ -101,7 +102,7 @@ export default function Contact() {
             alt="One of Jericho's rescued cats"
           />
         </div>
-        <p className="note">Here's a lucky picture of my cat!</p>
+        
         <div className="contact-socials">
           <Socials />
         </div>

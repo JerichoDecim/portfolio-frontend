@@ -1,14 +1,12 @@
-/* ── Design tokens (inherits global ones if defined, or local fallbacks) ── */
+/* ── Design tokens ── */
 :root {
   --about-img-size-mobile: 180px;
   --about-img-size-tablet: 240px;
   --about-img-size-desktop: 300px;
-  --about-code-size-mobile: 0.8rem;
-  --about-code-size-tablet: 1rem;
-  --about-code-size-desktop: 1.15rem;
+  --about-code-size-mobile: 0.6rem;
+  --about-code-size-tablet: 0.9rem;
+  --about-code-size-desktop: 1.1rem;
 }
-
-
 
 /* ═══════════════════════════════
    BASE (mobile-first)
@@ -17,12 +15,10 @@
 .about-container {
   display: flex;
   flex-direction: column;
-  gap: 28px;
   padding: 20px 16px;
-  margin-top: 30px;
+  gap: 20px;
 }
 
-/* ── Top: stacked on mobile ── */
 .about-top {
   display: flex;
   flex-direction: column;
@@ -31,11 +27,11 @@
   width: 100%;
 }
 
-/* ── Left: profile image ── */
 .about-left {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 40px 0px 0px 20px;
 }
 
 .about-left img {
@@ -43,21 +39,35 @@
   height: var(--about-img-size-mobile);
   object-fit: cover;
   border-radius: 4px;
-
-  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    filter 0.3s ease;
   cursor: pointer;
   outline: none;
   border: none;
 }
 
-/* ── Right: bio code block ── */
-.about-right {
-  width: 100%;
-  padding: 0;
+.about-left img:hover {
+  transform: scale(1.05);
+  filter: brightness(1.05);
 }
 
+.about-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 .about-right pre {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: var(--about-code-size-mobile);
   line-height: 1.75;
   white-space: pre-wrap;
@@ -66,11 +76,22 @@
   font-weight: 450;
 }
 
-/* ── Bottom: gallery ── */
 .about-bottom {
-  width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  width: 100%;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.gallery-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 75%;
 }
 
 /* ═══════════════════════════════
@@ -78,11 +99,9 @@
 ═══════════════════════════════ */
 @media (min-width: 768px) {
   .about-container {
-    gap: 32px;
     padding: 28px 32px;
   }
 
-  /* Side-by-side at tablet */
   .about-top {
     flex-direction: row;
     align-items: flex-start;
@@ -101,11 +120,25 @@
 
   .about-right {
     flex: 1;
-    padding-top: 12px;
   }
 
   .about-right pre {
     font-size: var(--about-code-size-tablet);
+  }
+
+  .about-bottom {
+    width: 100%;
+    flex: 1;
+    
+    align-items: center;
+    justify-content: center;
+  }
+
+  .gallery-container {
+    display: flex;
+    flex-direction:column;
+    justify-content: space-between;
+    width: 100%;
   }
 }
 
@@ -114,13 +147,17 @@
 ═══════════════════════════════ */
 @media (min-width: 1024px) {
   .about-container {
-    gap: 35px;
+    display: flex;
     padding: 30px 0;
-    height: 88vh;
+    height: 90vh;
+    justify-content: space-around;
+    align-items: center;
   }
 
   .about-top {
     gap: 8px;
+    display: flex;
+    flex: 1;
   }
 
   .about-left {
@@ -136,16 +173,76 @@
 
   .about-right {
     flex: 2;
-    padding-top: 20px;
-    padding-right: 30px;
+   
+    display: flex;
+    
+    
+  }
+
+  .right-wrapper{
+    align-items: center;
+    justify-content: center;
+    margin-right: 40px;
+    margin-top: 40px;
   }
 
   .about-right pre {
     font-size: var(--about-code-size-desktop);
   }
+
+  .about-bottom {
+    width: 100%;
+    flex: 1.5;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .gallery-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 96%;
+    
+  }
 }
 
-.about-left img:hover {
-  transform: scale(1.05);
-  filter: brightness(1.05);
+/* ═══════════════════════════════
+   WIDE (≥1900px)
+═══════════════════════════════ */
+@media (min-width: 1900px) {
+  :root {
+    --about-img-size-desktop: 420px;
+    --about-code-size-desktop: 1.7rem;
+  }
+
+  .about-container {
+    padding: 40px 0;
+    display: flex;
+    
+  }
+
+  .about-top {
+    gap: 16px;
+    flex:1;
+  }
+
+  .about-bottom {
+    width: 100%;
+    flex: 1.8;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .about-right {
+    padding-right: 80px;
+  }
+
+  .gallery-container {
+    gap: 10px;
+    width: 99%;
+  }
+
+  .about-right pre {
+    font-size: 1.4rem;
+  }
 }

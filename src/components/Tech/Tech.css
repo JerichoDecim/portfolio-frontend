@@ -3,9 +3,9 @@
   --tech-img-size-mobile: 48px;
   --tech-img-size-tablet: 60px;
   --tech-img-size-desktop: 70px;
-  --tech-code-size-mobile: 0.78rem;
+  --tech-code-size-mobile: 0.7rem;
   --tech-code-size-tablet: 1rem;
-  --tech-code-size-desktop: 1.2rem;
+  --tech-code-size-desktop: 1.1rem;
   --tech-label-size-mobile: 1rem;
   --tech-label-size-desktop: 1.3rem;
   --transition-fast: 0.2s ease;
@@ -19,7 +19,7 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-  padding: 24px 16px;
+  padding: 20px 16px;
   overflow: hidden;
 }
 
@@ -92,6 +92,7 @@
   white-space: pre-wrap;
   word-break: break-word;
   margin: 0;
+  font-weight: 450;
 }
 
 /* ═══════════════════════════════
@@ -104,9 +105,8 @@
   }
 
   .tech-left {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    display: flex;
+    flex-direction: column;
   }
 
   .set img {
@@ -114,7 +114,7 @@
     height: var(--tech-img-size-tablet);
   }
 
-  /* ✅ REMOVED nowrap — icons will wrap instead of overflow */
+  
   .set { gap: 20px; }
 
   .right-text pre {
@@ -129,28 +129,28 @@
   .tech-container {
     flex-direction: row;
     height: 88vh;
-    gap: 5px;
-    padding: 0;
     overflow: hidden;
+    padding: 10px;
   }
 
   .tech-left {
     display: flex;
     flex-direction: column;
-    flex: 0 0 40%;
+    flex: 1;
     justify-content: space-around;
     gap: 0;
   }
 
   .tech-right {
-    flex: 0 0 60%;
+    flex: 1.5;
     justify-content: space-around;
     gap: 0;
   }
 
   .right-text {
-    flex: 0 0 30%;
-    margin-top: 100px;
+    flex: 2;
+    margin: 10px;
+    
   }
 
   .right-text pre {
@@ -164,13 +164,42 @@
 
   .tech-label {
     font-size: var(--tech-label-size-desktop);
-    width: 20%;
+    width: 40%;
   }
 
   /* column4 equivalent — last category in right panel */
-  .tech-right .tech-category {
-    flex: 0 0 70%;
-    padding-bottom: 120px;
+  .tech-right  {
+    flex: 1.3;
     justify-content: center;
+    gap: 10px;
+  }
+
+  .tech-category {
+    justify-content: center;
+    gap: 10px;
+    flex:1;
+  }
+}
+
+/* ═══════════════════════════════
+   WIDE (≥1900px)
+═══════════════════════════════ */
+@media (min-width: 1900px) {
+  :root {
+    --tech-img-size-desktop: 100px;
+    --tech-code-size-desktop: 1.4rem;
+    --tech-label-size-desktop: 1.7rem;
+  }
+
+  .tech-container {
+    padding: 20px 40px;
+  }
+
+  .tech-label {
+    padding: 10px 32px;
+  }
+
+  .set {
+    gap: 28px;
   }
 }

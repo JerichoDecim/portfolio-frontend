@@ -35,7 +35,8 @@ export default function Hero() {
         <span className="cursor" aria-hidden="true">|</span>
       </p>
 
-      <h1 className="hero-name">Jericho B. Baal, ECT</h1>
+      <h1 className="hero-name">
+        <span>Jericho B. Baal, ECT</span></h1>
 
       <div className="hero-code-block">
         <pre aria-label="Profile summary">
@@ -45,7 +46,7 @@ export default function Hero() {
           {"\n"}
           {PROFILE.map(({ key, value }, i) => (
             <span key={key}>
-              {"  "}{key} : <span className="code-str">"{value}"</span>
+              {"  "}{"  "}{key} : <span className="code-str">"{value}"</span>
               {i < PROFILE.length - 1 ? "," : ""}
               {"\n"}
             </span>
