@@ -1,4 +1,5 @@
 import React from "react";
+import { Analytics } from "@vercel/analytics/react";
 import Navbar from "./components/Navbar/Navbar";
 import "./App.css"
 import Hero from "./components/Hero/Hero";
@@ -19,6 +20,7 @@ return (
         <Project/>
         <Contact/>
         <Footer/>
+        <Analytics/>
         
     </section>
 )
