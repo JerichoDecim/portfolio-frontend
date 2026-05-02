@@ -128,7 +128,8 @@
 @media (min-width: 1024px) {
   .tech-container {
     flex-direction: row;
-    height: 88vh;
+    height: auto;
+    min-height: 88vh;
     overflow: hidden;
     padding: 10px;
   }

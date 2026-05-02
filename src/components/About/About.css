@@ -149,7 +149,8 @@
   .about-container {
     display: flex;
     padding: 30px 0;
-    height: 90vh;
+    height: auto;
+    min-height: 88vh;
     justify-content: space-around;
     align-items: center;
   }
