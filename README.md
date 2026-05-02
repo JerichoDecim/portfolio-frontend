@@ -6,7 +6,7 @@ A personal portfolio website built with React, showcasing my projects, skills, a
 
 ## 🔗 Live Demo
 
-> 🚧 Coming soon — will be updated after deployment.
+> [Jericho B. Baal|Portfolio](https://jerichobaal-portfolio-ab42x585v-jerichodecims-projects.vercel.app/)
 
 ---
 
