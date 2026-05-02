@@ -24,7 +24,19 @@ function SuccessMessage() {
   );
 }
 
-function ContactForm({ form, onChange, onSubmit }) {
+// --- added error message component ---
+function ErrorMessage({ message }) {
+  return (
+    <div className="contact-error" role="alert">
+      <p>
+        <span className="code-keyword">error </span>
+        <span className="code-str">"{message}"</span>
+      </p>
+    </div>
+  );
+}
+
+function ContactForm({ form, onChange, onSubmit, isLoading }) {
   return (
     <div className="contact-form" onSubmit={onSubmit}>
       <FormField label="name">
@@ -36,6 +48,7 @@ function ContactForm({ form, onChange, onSubmit }) {
           onChange={onChange}
           required
           className="contact-input"
+          disabled={isLoading}
         />
       </FormField>
 
@@ -48,6 +61,7 @@ function ContactForm({ form, onChange, onSubmit }) {
           onChange={onChange}
           required
           className="contact-input"
+          disabled={isLoading}
         />
       </FormField>
 
@@ -60,12 +74,20 @@ function ContactForm({ form, onChange, onSubmit }) {
           required
           className="contact-textarea"
           rows={5}
+          disabled={isLoading}
         />
       </FormField>
 
-      <button type="submit" className="contact-btn" onClick={onSubmit}>
-        <span className="code-keyword">Submit </span>
-        <span className="code-keyword">() </span>
+      <button
+        type="submit"
+        className="contact-btn"
+        onClick={onSubmit}
+        disabled={isLoading}
+      >
+        <span className="code-keyword">
+          {isLoading ? "Sending..." : "Submit "}
+        </span>
+        {!isLoading && <span className="code-keyword">() </span>}
       </button>
     </div>
   );
@@ -74,23 +96,59 @@ function ContactForm({ form, onChange, onSubmit }) {
 export default function Contact() {
   const [form, setForm] = useState(INITIAL_FORM);
   const [sent, setSent] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleChange = (e) =>
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSent(true);
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setSent(true);
+        setForm(INITIAL_FORM);
+      } else {
+        // backend returned a validation error (400) or server error (500)
+        setError(data.error || "Something went wrong. Please try again.");
+      }
+    } catch (err) {
+      // network error — backend is unreachable
+      setError("Could not reach the server. Please try again later.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
     <section className="contact-container" id="contact">
       <div className="contact-left">
         <h2 className="contact-label">Get in touch</h2>
-        {sent
-          ? <SuccessMessage />
-          : <ContactForm form={form} onChange={handleChange} onSubmit={handleSubmit} />
-        }
+
+        {sent ? (
+          <SuccessMessage />
+        ) : (
+          <>
+            {error && <ErrorMessage message={error} />}
+            <ContactForm
+              form={form}
+              onChange={handleChange}
+              onSubmit={handleSubmit}
+              isLoading={isLoading}
+            />
+          </>
+        )}
       </div>
 
       <div className="contact-right">
@@ -102,7 +160,7 @@ export default function Contact() {
             alt="One of Jericho's rescued cats"
           />
         </div>
-        
+
         <div className="contact-socials">
           <Socials />
         </div>
