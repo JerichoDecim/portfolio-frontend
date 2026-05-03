@@ -1,5 +1,6 @@
 import React from "react";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import Navbar from "./components/Navbar/Navbar";
 import "./App.css"
 import Hero from "./components/Hero/Hero";
@@ -21,7 +22,7 @@ return (
         <Contact/>
         <Footer/>
         <Analytics/>
-        
+        <SpeedInsights/>
     </section>
 )
 }
