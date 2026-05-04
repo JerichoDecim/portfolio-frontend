@@ -3,11 +3,12 @@ import "./Tech.css";
 const TECH_CATEGORIES = [
   {
     id: "electronics",
-    label: "Electronics",
+    label: "Embedded Systems",
     icons: [
       { src: "/assets/arduino.png", alt: "Arduino" },
       { src: "/assets/ESP32.png", alt: "Espressif ESP32" },
       { src: "/assets/kicad.png", alt: "KiCad" },
+      { src: "/assets/c.png", alt: "c language" },
     ],
   },
   {
@@ -35,6 +36,7 @@ const TECH_CATEGORIES = [
     label: "Technologies",
     icons: [
       { src: "/assets/vs.png", alt: "VS Code" },
+      { src: "/assets/stm.png", alt: "STM32 Cube IDE" },
       { src: "/assets/git.png", alt: "Git" },
       { src: "/assets/siemens.png", alt: "Siemens NX" },
     ],
@@ -42,11 +44,11 @@ const TECH_CATEGORIES = [
 ];
 
 const TECH_BULLETS = [
-  "Embedded Systems — Arduino, ESP32, sensors, modules, IoT development",
-  "Programming — C, Python, HTML, CSS, JavaScript",
-  "Schematic & PCB Design — KiCad, circuit debugging and testing",
-  "Web Development — Node.js, Express.js, React, PostgreSQL, Git",
-  "Engineering Tools — Siemens NX, SUMO: Simulation of Urban Mobility",
+  "Embedded Systems - Arduino, ESP32, peripherals (GPIO, ADC), modules, IoT development",
+  "Programming - C, Python, Visual Studio, STM32 Cube IDE",
+  "Electronics and Hardware Design - Schematic & PCB Design (KiCad), circuit debugging and testing",
+  "Engineering & Lab Tools - Siemens NX , Git (version control), anechoic chamber",
+  "Web Development - HTML, CSS, Javascript, Node.js, Express.js, React.js, PostgreSQL",
 ];
 
 function TechCategory({ label, icons }) {
