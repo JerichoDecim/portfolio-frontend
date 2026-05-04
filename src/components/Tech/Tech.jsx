@@ -9,7 +9,7 @@ const TECH_CATEGORIES = [
       { src: "/assets/ESP32.png", alt: "Espressif ESP32" },
       { src: "/assets/kicad.png", alt: "KiCad" },
       { src: "/assets/c.png", alt: "c language" },
-      { src: "/assets/c++.png", alt: "c ++ language" },
+      { src: "/assets/C++.png", alt: "c ++ language" },
     ],
   },
   {
